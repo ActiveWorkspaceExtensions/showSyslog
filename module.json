@@ -1,0 +1,8 @@
+{
+    "name": "syslog",
+    "desc": "This is the syslog module",
+    "type": [
+        "native"
+    ],
+    "skipTest": true
+}

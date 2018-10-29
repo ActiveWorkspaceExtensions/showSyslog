@@ -1,0 +1,74 @@
+{
+    "schemaVersion": "1.0.0",
+    "imports": [
+        "js/aw-panel.directive",
+        "js/aw-panel-body.directive",
+        "js/aw-label.directive"
+    ],
+    "actions": {
+        "reveal":
+        {
+            "actionType": "dataProvider",
+            "method": "syslogProvider"
+        },
+        "activateshowSyslog": {
+            "actionType": "TcSoaService",
+            "serviceName": "Internal-DebugMonitor-2011-06-DebugLogging",
+            "method": "getSyslogFile",
+            "inputData":
+            {
+                "size": 150000
+            },
+            "outputData": {
+                "ctx.syslog": "out"
+            },
+            "events":
+            {
+                "success":
+                [
+                    {
+                        "name": "syslog.updateDisplay"  
+                    }
+                ]
+            }
+        },
+        "updateDisplay": {
+			"actionType": "JSFunction",
+			"method": "updateDisplay",
+			"inputData": {
+				"data": "{{data}}"
+			},
+			"deps": "js/syslogService"
+		}
+    },
+    "data": {
+        "box2": {
+            "displayName": "Syslog Contents",
+            "type": "STRING",
+            "isRequired": "false",
+            "isEditable": "false",
+            "dbValue": "dbValue",
+            "dispValue": "{{ctx.syslog}}",
+            "uiValue":"{{ctx.syslog}}"
+        }
+    },
+    "onEvent": [{
+		"eventId": "awPanel.reveal",
+		"criteria": {
+			"panelId": "syslog"
+		},
+        "action": "syslogProvider"
+    },    
+	{
+		"eventId": "syslog.updateDisplay",
+		"action": "updateDisplay"
+	}],
+    "dataProviders":
+    {
+        "syslogProvider":
+        {
+            "action": "activateshowSyslog",
+            "data.box2.uiValue":"{{ctx.syslog}}"
+        }
+    }
+}
