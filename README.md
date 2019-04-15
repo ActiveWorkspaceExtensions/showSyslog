@@ -1,6 +1,9 @@
 # showSyslog
 Show contents of syslog
 
+## version
+Active Workspace 4.0
+
 ## build
 - Create a new folder under `stage/src`, called `syslog`.
 
