@@ -13,9 +13,9 @@
 /**
  * @module js/syslogService
  */
-define( [ 'app', 'js/logService', 'js/eventBus', //
+define( [ 'app', 'js/eventBus', //
 'js/popupService', 'js/appCtxService' ], //
-function( app, logSvc, eventBus ) {
+function( app, eventBus ) {
     'use strict';
 
     var _syslogSvc = null;
