@@ -2,24 +2,17 @@
 Show contents of syslog
 
 ## version
-Active Workspace 4.0
+Active Workspace 4.3
 
 ## build
-- Create a new folder under `stage/src`, called `syslog`.
+- Create a new folder under `stage/src`, called `showSyslog`.
 
 - Download the contents of this repository to the new folder
 
-- Add an entry to `stage/src/solution/kit.json`, as shown:
-```json
-    "modules": [
-        "tc-aw-solution",
-        "syslog"
-    ],
-```
-- Use `gwtcompile` to generate a new WAR file, then deploy.
+- Use `awbuild` to build and publish to the file repo.
     
 ## usage
-After building and deploying the code, add a new page to a stylesheet.  
+After building and publishing the code, add a new page to a stylesheet.  
 
 For instance, to add to User Profile edit *Awp0UserSummary* stylesheet, and add the snippet below:
 
